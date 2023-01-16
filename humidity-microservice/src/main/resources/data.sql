@@ -1,0 +1,1 @@
+CREATE TABLE READINGS AS SELECT * FROM CSVREAD('src/main/resources/readings.csv');

@@ -1,0 +1,31 @@
+version: 2.15.0
+services:
+  temperature-microservice:
+    build:
+      context: temperature-microservice
+      dockerfile: Dockerfile
+    image: temperature-microservice:latest
+    networks:
+      - spring-cloud-network
+
+  humidity-microservice:
+    build:
+      context: humidity-microservice
+      dockerfile: Dockerfile
+    image: humidity-microservice:latest
+    networks:
+      - spring-cloud-network
+
+  aggregator-microservice:
+    build:
+      context: aggregator-microservice
+      dockerfile: Dockerfile
+    image: aggregator-microservice:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - spring-cloud-network
+
+networks:
+  spring-cloud-network:
+    driver: bridge
